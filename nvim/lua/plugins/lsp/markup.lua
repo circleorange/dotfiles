@@ -4,6 +4,7 @@ return
             -- Integration with Zotero for Markdown for managing citations.
             -- 
             "jalvesaq/zotcite",
+            enabled = false, -- TODO: Causing errors due to missing config (SQLite path)
             dependencies = {
                 "nvim-treesitter/nvim-treesitter",
                 "nvim-telescope/telescope.nvim",
@@ -124,8 +125,8 @@ return
             lazy        = true,
             -- Only load obsidian.nvim for markdown files in Obsidian vault directory.
             event = {
-                "BufReadPre " .. "/home/pbiel/repos/obsidian-vaults/masters/*.md",
-                "BufNewFile " .. "/home/pbiel/repos/obsidian-vaults/masters/*.md",
+                "BufReadPre " .. "/home/pbiel/repos/obsidian-vaults/**/*.md",
+                "BufNewFile " .. "/home/pbiel/repos/obsidian-vaults/**/*.md",
             },
             dependencies = {
                 "nvim-lua/plenary.nvim",            -- Required
@@ -136,7 +137,7 @@ return
             opts = {
                 mappings = {}, -- Empty table removes default key maps
                 workspaces = {
-                    { name = "Masters", path = "/home/pbiel/repos/obsidian-vaults/masters" }
+                    { name = "msc", path = "/home/pbiel/repos/obsidian-vaults/msc" }
                 },
                 -- Completions of Wiki links (`[[`), markdown links (`[`), and tags (`#`)
                 -- > `min_chars` specified character threshold to trigger completions
