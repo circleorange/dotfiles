@@ -44,19 +44,18 @@ return {
 	},
 	config = function()
 		-- Initialise all language servers with the same initial configurations.
-		local extended_capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		vim.lsp.config("*", {
-			capabilities = extended_capabilities,
+			capabilities = cmp_capabilities,
 		})
 		require("mason").setup()
 		local lang_servers = {
 			"lua_ls",	-- Lua
 			"pyright",	-- Python (can replace with ruff & basedpyright)
 			--"jdtls",	-- Java
-			--"bashls",	-- Bash
-			--"lemminx",	-- XML
+			"bashls",	-- Bash
+			"lemminx",	-- XML
 			--"clangd",	-- C/C++
-			--"marksman",	-- Markdown
 			--"dockerls", "docker_compose_language_service",
 		}
 		require("mason-lspconfig").setup {

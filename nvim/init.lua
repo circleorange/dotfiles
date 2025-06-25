@@ -51,7 +51,7 @@ require("lazy").setup {
     -- Language Server Protocols (LSP)
     require "plugins.lsp.lua_ls",
 	require "plugins.lsp.python",
-	require "lua.plugins.lsp.markup",
+	require "plugins.lsp.markup",
     -- require("lsp.java"), -- Disabled due to issues with Mason 2.0
 	-- require("lsp.bash"),
 	-- require("lsp.c"),

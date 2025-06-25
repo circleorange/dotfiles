@@ -41,6 +41,12 @@ return {
 				--		> fuzzy_path	(filesystem paths)
 				--		> rg			(ripgrep results)
 				--		> cmp-ai		(any AI completion/ chat to cmp)
+                --
+                -- Notes:
+                --      > To add more sources in different files,
+                --      > First, retrieve existing sources: `local cmp_config = cmp.get_config()`
+                --      > Then append: `table.insert(cmp_config.sources, { name = "NewSource" })`
+                --      > Re-register sources again: `cmp.setup(cmp_config)`
 				--
 				sources = cmp.config.sources {
 					{name = "nvim_lsp"},	-- cmp-nvim-lsp

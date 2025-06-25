@@ -6,7 +6,6 @@ return {
 		"mfussenegger/nvim-dap",
 	},
 	config = function()
-		-- require("lspconfig").pyright.setup({
 		vim.lsp.config("pyright", {
 			-- Defaults:
 			-- cmd			= {"pyright-langserver", "--stdio"}

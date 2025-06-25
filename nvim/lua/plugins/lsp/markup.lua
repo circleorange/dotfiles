@@ -17,11 +17,14 @@ return
                         "pandoc", "markdown", "rmd", "quarto"
                     },
                 }
-                require "cmp".setup {
+                require "cmp".setup.filetype("markdown", {
                     sources = {
-                        { name = "cmp_zotcite" }
+                        { name = "cmp_zotcite" },
+                        { name = "nvim_lsp" },
+                        { name = "buffer" },
+                        { name = "path" },
                     }
-                }
+                })
             end -- <<< config
         },
         {
