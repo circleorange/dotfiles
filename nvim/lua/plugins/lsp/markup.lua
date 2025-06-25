@@ -139,6 +139,11 @@ return
                 workspaces = {
                     { name = "msc", path = "/home/pbiel/repos/obsidian-vaults/msc" }
                 },
+                -- Optional, Used when `new_notes_location` set to "notes_subdir" to specify location.
+                notes_subdir = "notes",
+                -- Location of new notes.
+                -- Options: "current_dir" (Based on buffer) | "notes_subdir" (Based on property)
+                new_notes_location = "current_dir",
                 -- Completions of Wiki links (`[[`), markdown links (`[`), and tags (`#`)
                 -- > `min_chars` specified character threshold to trigger completions
                 completion = { nvim_cmp = true, min_chars = 2 },
