@@ -97,6 +97,7 @@ Neither Kitty nor Ghostty are supported on Windows OS, however, with WSL2 (and W
 - harpoon (but first might be worth exploring built-in Marks)
 - `yetone/avante.nvim`: AI support similar to Cursor IDE.
 - `shortcuts/no-neck-pain.nvim`: Center focues buffer.
+- `SilasMarvin/lsp-ai`: AI-powered LSP
 
 ## References
 - Potential contribution to implement support for snacks.image in molten-nvim (https://github.com/benlubas/molten-nvim/discussions/285).
