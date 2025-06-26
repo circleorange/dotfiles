@@ -21,19 +21,47 @@ return {
 	end -- <<< config
     },
     {
+        -- LSP features for executing python code embedded in file formats not supported by pyright (Jupyter, Markdown):
+        --      Completions, formatting, diagnostics, cell code execution (otter.nvim)
+        "quarto-dev/quarto-nvim",
+        dependencies = {
+            "jmbuhr/otter.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        opts = {
+            debug = false,
+            closePreviewOnExit = true,
+            lspFeatures = {
+                enabled = true, chunks = "curly",
+                languages = { "python", "r" },
+                diagnostics = { enabled = true, triggers = { "BufWritePost" } },
+                completion = { enabled = true },
+            },
+            codeRunner = {
+                enabled = true,
+                default_method = "molten",
+                -- ft_runners = {}, -- Runners for specific file types, e.g. { python = "molten" }
+                -- never_run = {}, -- Disable runners for specific file types, e.g. "yaml"
+            },
+        }, -- <<< opts
+    },
+    {
         -- Plugin to execute Python code interactively with Jupyter (.ipynb)
         -- Alternatives: dccsillag/magma-nvim (fork), Vigemus/iron.nvim
         "benlubas/molten-nvim",
-        dependencies = { "3rd/image.nvim" },
+        dependencies = {
+            "3rd/image.nvim"
+        },
         build = ":UpdateRemotePlugins",
         init = function()
-            vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
+            -- vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3") -- For use with venv
+            vim.g.python3_host_prog=vim.fn.expand("~/miniconda3/envs/neovim/bin/python") -- For use with cenv
             vim.g.molten_image_provider = "image.nvim"
             vim.g.molten_output_win_max_height = 20
         end
     },
     {
-        -- Plugin to render images in the terminal.
+        -- Support for images rendering in the terminal.
         "3rd/image.nvim",
         build = false,
         dependencies = {
@@ -42,12 +70,12 @@ return {
         opts = {
             processor   = "magick_cli",
             backend     = "kitty",
-            -- max_width   = 100,
-            -- max_height  = 12,
-            -- max_height_window_percentage    = math.huge,
-            -- max_width_window_percentage     = math.huge,
-            -- window_overlap_clear_enabled    = true, -- Toggle images when windows are overlapped
-            -- window_overlap_clear_ft_ignore  = { "cmp_menu", "cmp_docs", ""},
+            max_width   = 100,
+            max_height  = 12,
+            max_height_window_percentage    = math.huge,
+            max_width_window_percentage     = math.huge,
+            window_overlap_clear_enabled    = true, -- Toggle images when windows are overlapped
+            window_overlap_clear_ft_ignore  = { "cmp_menu", "cmp_docs", ""},
         } -- <<< opts
     }
 }

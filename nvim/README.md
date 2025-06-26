@@ -65,22 +65,24 @@ venv neovim
 ```
 - Install Remote Plugin APIs (Python client and Jupyter client), along with other dependencies from `pip`:
 ```
-pip install pynvim jupyter_client plotly kaleifo pnglatex pyperclip cairosvg pyyaml
+pip install pynvim jupyter_client jupyter-console plotly kaleido pnglatex pyperclip cairosvg pyyaml
 ```
 > Additional dependencies can include: `pnglatex` (for rendering TeX equations), `pyperclip` (To use molten_copy_output).
 >Alternatively, if using Conda:
 ```
 conda install -c conda-forge jupyter_client
 ```
-- Point Neovim to the venv:
+- Point Neovim to the environment (venv/ cenv):
 ```
 vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
+-- or, if using miniconda
+vim.g.python3_host_prog=vim.fn.expand("~/miniconda3/envs/neovim/bin/python")
 ```
 - Install the kernel in a project virtual environment:
 ```
 venv project_name
 pip install ipykernel
-python -m ipykernel install --user --name project name
+python -m ipykernel install --user --name <project_name>
 ```
 - Launch Neovim with project venv active, and should be able to run `:MoltenInit {project_name}` to start kernel for project venv.
 
