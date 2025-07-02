@@ -1,5 +1,7 @@
 # Add to .bashrc:
-# if [ -f ~/.config/.bash_config ]; then source ~/.config/.bash_config fi
+# source ~/.config/my_bash.sh
+
+source ~/.config/cenv_wrapper.sh
 
 # Links from WSL to Windows
 CDPATH=~/.paths
