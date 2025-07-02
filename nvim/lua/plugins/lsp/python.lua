@@ -21,9 +21,18 @@ return {
 	end -- <<< config
     },
     {
+        -- Features to convert ipynb files to plaintext file (e.g. md).
+        "GCBallesteros/jupytext.nvim",
+        lazy = false,
+        opts = {
+            style = "markdown", output_extension = "md", force_ft = "markdown",
+        },
+    },
+    {
         -- LSP features for executing python code embedded in file formats not supported by pyright (Jupyter, Markdown):
         --      Completions, formatting, diagnostics, cell code execution (otter.nvim)
         "quarto-dev/quarto-nvim",
+        ft = { "quarto", "markdown" },
         dependencies = {
             "jmbuhr/otter.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -32,10 +41,10 @@ return {
             debug = false,
             closePreviewOnExit = true,
             lspFeatures = {
-                enabled = true, chunks = "curly",
-                languages = { "python", "r" },
+                enabled     = true, chunks = "all", -- ("curly" | "all")
+                languages   = { "python", "r" },
                 diagnostics = { enabled = true, triggers = { "BufWritePost" } },
-                completion = { enabled = true },
+                completion  = { enabled = true },
             },
             codeRunner = {
                 enabled = true,

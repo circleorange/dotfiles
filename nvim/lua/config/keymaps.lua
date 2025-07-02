@@ -19,16 +19,7 @@ set("n", "<Leader>oq", ":ObsidianQuickSwitch", "[Q]uick Switch")
 set("n", "<Leader>os", ":ObsidianSearch ", "[S]earch or Create notes", nil, false)
 set("n", "<Leader>ot", ":ObsidianTags ", "Find [t]ags", nil, false)
 set("n", "<Leader>ow", ":ObsidianWorkspace ", "Open [W]orkspace", nil, false)
-set("n", "<Leader>pnq", ":QuartoPreview", "([Q]uarto) Preview")
-set("n", "<Leader>pni", function()
-    local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
-    if venv ~= nil then
-        venv = string.match(venv, "/.+/(.+)")
-        vim.cmd(("MoltenInit %s"):format(venv))
-    else
-        vim.cmd("MoltenInit python3")
-    end
-end, "Initialise Python Kernel")
+
 
 -- Misc
 set("n", "<Leader>rl", ":luafile %",                "Run current Lua file")

@@ -65,7 +65,7 @@ venv neovim
 ```
 - Install Remote Plugin APIs (Python client and Jupyter client), along with other dependencies from `pip`:
 ```
-pip install pynvim jupyter_client jupyter-console plotly kaleido pnglatex pyperclip cairosvg pyyaml
+pip install pynvim jupyter_client jupyter-console plotly kaleido pnglatex pyperclip cairosvg pyyaml jupytext
 ```
 > Additional dependencies can include: `pnglatex` (for rendering TeX equations), `pyperclip` (To use molten_copy_output).
 >Alternatively, if using Conda:

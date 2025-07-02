@@ -1,5 +1,20 @@
 local M = {}
 
+function M.set_v2(modes, key, fn, desc, auto_submit, opts)
+    local opts_default, opts_combined
+
+    -- Combine default and new opts, if provided, and description
+    opts_default       = { noremap = true, silent = true }
+    opts_combined      = vim.tbl_extend("force", opts_default, opts or {})
+    opts_combined.desc = desc
+
+    -- By default, automatically insert <Cr> to string type `fn`, unless specified otherwise
+    local should_auto_submit = (type(fn) == "string") and (auto_submit ~= false)
+    local callback           = should_auto_submit and (fn .. "<Cr>") or fn
+
+    vim.keymap.set(modes, key, callback, opts_combined)
+end
+
 -- TODO: Could implement function to take in predefined data object with configurations
 -- function M.set_v2(mode, key, fn, conf_struct) end
 -- function ConfigStruct(fn_args, opts, auto_submit)
